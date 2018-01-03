@@ -3,7 +3,7 @@
 
 
 
->项目环境说明：（版本应当不低于以下版本）
+项目环境说明：（版本应当不低于以下版本）
 开发平台：Windows10 
 
 
@@ -26,15 +26,15 @@ Maven 版本：3.5
 [IntellliJ IDEA IntelliJ 如何创建数据表和SQL文件](https://jingyan.baidu.com/article/bea41d43a80be4b4c51be60c.html)
 
 ## 2.   导入项目
-![项目导入](https://github.com/95DBC/Onlineteach/tree/master/README/1.png)
+![项目导入](/demo_inxedu_open/img/1.png)
 
 ## 3.   配置maven，选择jdk运行环境
 [windows10如何安装Maven](https://jingyan.baidu.com/article/046a7b3e80bc06f9c27fa9bb.html)
 选择Maven 文件
-![选择Maven](https://github.com/95DBC/Onlineteach/tree/master/README/2.png)
+![选择Maven](/demo_inxedu_open/img/2.png)
 jdk 配置
 
-![jdk 配置](https://github.com/95DBC/Onlineteach/tree/master/README/3.png)
+![jdk 配置](/demo_inxedu_open/img/3.png)
 ## 4.	配置项目
  属性文件路径：\src\main\resources\project.properties
 注：只需配置和修改sql主机地址，数据库名，用户名，密码， 项目访问路径，这几个属性，项目即可正常运行访问。
@@ -91,14 +91,14 @@ authorizationKey=edc3d9c3765ac000f05e2ced93756603
 ```
 ## 5.	编译项目
 Clean》
-![Clean](https://github.com/95DBC/Onlineteach/tree/master/README/4.png)
+![Clean](/demo_inxedu_open/img/4.png)
 Install》
-![Install](https://github.com/95DBC/Onlineteach/tree/master/README/5.png)
+![Install](/demo_inxedu_open/img/5.png)
 
 ## 6.	项目运行
 6.1  单击Run-->Edit Configurations...-->
-![添加maven](https://github.com/95DBC/Onlineteach/tree/master/README/6.png)
-![Maven项目运行](https://github.com/95DBC/Onlineteach/tree/master/README/7.png)
+![添加maven](/demo_inxedu_open/img/6.png)
+![Maven项目运行](/demo_inxedu_open/img/7.png)
 
 ## 7.	项目访问
 >前台http://127.0.0.1/ 
