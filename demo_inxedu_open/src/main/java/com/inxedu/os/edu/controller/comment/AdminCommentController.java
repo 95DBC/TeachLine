@@ -20,7 +20,7 @@ import java.util.Map;
 
 /**
  * 后台台评论模块
- * @author www.inxedu.com
+ *
  */
 @Controller
 @RequestMapping("/admin")

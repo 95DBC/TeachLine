@@ -5,7 +5,7 @@
 	<section class="container">
 		<h1 id="logo">
 			<a href="${ctx }/" title="${websitemap.web.company}">
-				<img src="<%=staticImage%>${logomap.logo.url}" width="100%" alt="${websitemap.web.company}">
+				<img src="" width="100%" alt="">
 			</a>
 		</h1>
 		<div class="h-r-nsl">

@@ -26,7 +26,7 @@ import java.util.Map;
 
 /**
  * 网站配置管理
- * @author www.inxedu.com
+ *
  */
 @Controller
 @RequestMapping("/admin")

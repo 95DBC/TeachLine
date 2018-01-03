@@ -8,10 +8,7 @@ import java.util.Map;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-/**
- * @author www.inxedu.com
- *
- */
+
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class FavouriteCourseDTO implements Serializable {

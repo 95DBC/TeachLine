@@ -411,12 +411,20 @@ public class UserController extends BaseController{
 			String account = request.getParameter("account");
 			String password = request.getParameter("password");
 			String ipForget = request.getParameter("ipForget");
+			String loginCode = request.getParameter("loginCode");
+
+			loginCode = loginCode==null?"":loginCode;
+			Object randomCode = request.getSession().getAttribute(CommonConstants.RAND_CODE);
+			if(randomCode == null || !randomCode.equals(loginCode)){
+				json = this.setJson(false, "请输入正确的验证码", null);
+				return json;
+			}
 			if(!StringUtils.isNotEmpty(account)){
 				json = this.setJson(false, "请输入登录帐号", null);
 				return json;
 			}
 			if(!StringUtils.isNotEmpty(password)){
-				json = this.setJson(false, "请输入登录密码", null);
+				json = this.setJson(false, "请输入登录密码",   null);
 				return json;
 			}
 			User user = userService.getLoginUser(account, MD5.getMD5(password));

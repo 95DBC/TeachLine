@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author www.inxedu.com
+ *
  * 课程查询条件
  */
 @Data

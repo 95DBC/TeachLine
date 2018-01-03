@@ -13,7 +13,6 @@ import com.inxedu.os.edu.entity.common.Comment;
 import com.inxedu.os.edu.entity.course.CourseDto;
 import com.inxedu.os.edu.entity.course.CourseStudyhistory;
 import com.inxedu.os.edu.entity.course.QueryCourse;
-import com.inxedu.os.edu.entity.help.HelpMenu;
 import com.inxedu.os.edu.entity.teacher.QueryTeacher;
 import com.inxedu.os.edu.entity.teacher.Teacher;
 import com.inxedu.os.edu.entity.user.User;
@@ -22,7 +21,6 @@ import com.inxedu.os.edu.entity.website.WebsiteImages;
 import com.inxedu.os.edu.service.comment.CommentService;
 import com.inxedu.os.edu.service.course.CourseService;
 import com.inxedu.os.edu.service.course.CourseStudyhistoryService;
-import com.inxedu.os.edu.service.help.HelpMenuService;
 import com.inxedu.os.edu.service.teacher.TeacherService;
 import com.inxedu.os.edu.service.website.WebsiteImagesService;
 import org.slf4j.Logger;
@@ -45,7 +43,7 @@ import java.util.Map;
 
 /**
  * 前台 controller
- * @author www.inxedu.com
+ *
  */
 @Controller
 public class WebFrontController extends BaseController {
@@ -62,8 +60,7 @@ public class WebFrontController extends BaseController {
 	private CommentService commentService;
 	@Autowired
 	private CourseStudyhistoryService courseStudyhistoryService;
-	@Autowired
-	private HelpMenuService helpMenuService;
+
 	
 	/**
 	 * 首页获取网站首页数据
@@ -276,35 +273,5 @@ public class WebFrontController extends BaseController {
 		return json;
     }
 
-	/**
-	 * 帮助中心
-	 *
-	 * @param request
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping("/front/helpCenter")
-	public String getHelpCenter(HttpServletRequest request, Model model) {
-		try {
-			// 右侧显示内容的二级菜单id
-			String id = request.getParameter("id");
-			// 帮助中心菜单集合，不含内容
-			List<List<HelpMenu>> helpMenus = helpMenuService.getHelpMenuAll();
-			model.addAttribute("helpMenus", helpMenus);
 
-			// 右侧显示内容
-			HelpMenu helpMenuContent = null;
-			if (id != null && !id.equals("")) {
-				helpMenuContent = helpMenuService.getHelpMenuById(Long.parseLong(id));
-			} else if (helpMenus.size() > 0 && helpMenus.get(0).get(1) != null) {
-				helpMenuContent = helpMenuService.getHelpMenuById(helpMenus.get(0).get(1).getId());
-			}
-			model.addAttribute("helpMenuContent", helpMenuContent);//显示的
-
-		} catch (Exception e) {
-			logger.error("WebFrontController.getHelpCenter", e);
-			return setExceptionRequest(request, e);
-		}
-		return getViewPath("/web/front/helpCenter");
-	}
 }

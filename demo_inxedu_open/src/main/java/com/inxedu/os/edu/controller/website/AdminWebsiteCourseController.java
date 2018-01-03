@@ -21,7 +21,7 @@ import java.util.List;
 
 /**
  * 推荐模块课程分类
- * @author www.inxedu.com
+ *
  */
 @Controller
 @RequestMapping("/admin")

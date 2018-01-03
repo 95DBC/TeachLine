@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  * Course管理接口
- * @author www.inxedu.com
+ *
  */
 public interface CourseDao {
     /**

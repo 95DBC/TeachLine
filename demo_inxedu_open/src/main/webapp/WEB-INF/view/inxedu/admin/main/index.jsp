@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8" http-equiv="Content-Type" />
-<title>后台管理系统 - 因酷在线教育软件 - 在线教育整体解决方案提供商</title>
+<title>后台管理系统 - 在线教育整体解决方案提供商</title>
 <script type="text/javascript" src="${ctximg}/static/admin/js/highChart/highcharts.js"></script>
 <script type="text/javascript" src="${ctximg}/static/admin/js/highChart/highcharts-3d.js"></script>
 <script type="text/javascript" language="javascript">
@@ -470,46 +470,46 @@ function xuanze(str){
 						<span>新增课程</span>
 					</a>
 				</li>
-				<li>
+				<%--<li>
 					<a href="${ctx}/admin/article/initcreate" target="content" title="新增文章" class="tooltip">
 						<img src="${ctx}/static/admin/assets/icons/8_48x48.png" alt="" />
 						<span>新增文章</span>
 					</a>
-				</li>
-				<li>
-					<a href="${ctx}/admin/article/showlist" target="content" title="文章列表" class="tooltip">
-						<img src="${ctx}/static/admin/assets/icons/7_48x48.png" alt="" />
-						<span>文章列表</span>
-					</a>
-				</li>
+				</li>--%>
+				<%--<li>--%>
+					<%--<a href="${ctx}/admin/article/showlist" target="content" title="文章列表" class="tooltip">--%>
+						<%--<img src="${ctx}/static/admin/assets/icons/7_48x48.png" alt="" />--%>
+						<%--<span>文章列表</span>--%>
+					<%--</a>--%>
+				<%--</li>--%>
 				<li>
 					<a href="${ctx}/admin/sysuser/userlist" title="管理用户" target="content" class="tooltip">
 						<img src="${ctx}/static/admin/assets/icons/16_48x48.png" alt="" />
 						<span>管理用户</span>
 					</a>
 				</li>
-				<li>
-					<a href="${ctx}/admin/website/imagesPage" title="媒体图片管理" class="tooltip">
-						<img src="${ctx}/static/admin/assets/icons/20_48x48.png" alt="" />
-						<span>媒体图片管理</span>
-					</a>
-				</li>
+				<%--<li>--%>
+					<%--<a href="${ctx}/admin/website/imagesPage" title="媒体图片管理" class="tooltip">--%>
+						<%--<img src="${ctx}/static/admin/assets/icons/20_48x48.png" alt="" />--%>
+						<%--<span>媒体图片管理</span>--%>
+					<%--</a>--%>
+				<%--</li>--%>
 			</ul>
 			<!-- End of Big buttons -->
 		</div>
 		<br/><br/><br/><br/><br/><br/>
 		<span>
             <b>全站在线人数:</b> <%=MySessionListener.num%>&nbsp;
-			<b>文章数:</b> ${webCountMap.articleCount}&nbsp;
+			<%--<b>文章数:</b> ${webCountMap.articleCount}&nbsp;--%>
 			<b>课程数:</b> ${webCountMap.courseCount}&nbsp;
 			<b>用户数:</b> ${webCountMap.userCount}&nbsp;
 			<b>问答数:</b> ${webCountMap.questionsCount}&nbsp;
 		</span>
-		<fieldset>
+		<%--<fieldset>
 			<legend>
-				<span>网站统计</span>
+				<span></span>
 				&gt;
-				<span id="countName">学员活跃度走势</span>
+				<span id="countName"></span>
 			</legend>
             <span onclick=""><button onclick="xuanze('LOGIN_NUM')" class="ui-state-default ui-corner-all" type="button" style="float: left">学员活跃度走势</button></span>
             <span onclick=""><button onclick="xuanze('REGISTERED_NUM')" class="ui-state-default ui-corner-all" type="button" style="float: left">学员注册数走势</button></span>
@@ -540,7 +540,7 @@ function xuanze(str){
 					</div>
 				</div>
 			</div>
-		</fieldset>
+		</fieldset>--%>
 	</div>
 </body>
 </html>

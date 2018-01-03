@@ -4,10 +4,7 @@ import com.inxedu.os.common.controller.BaseController;
 import com.inxedu.os.common.entity.PageEntity;
 import com.inxedu.os.common.util.ObjectUtils;
 import com.inxedu.os.common.util.SingletonLoginUtils;
-import com.inxedu.os.edu.entity.course.Course;
-import com.inxedu.os.edu.entity.course.CourseDto;
-import com.inxedu.os.edu.entity.course.CourseFavorites;
-import com.inxedu.os.edu.entity.course.QueryCourse;
+import com.inxedu.os.edu.entity.course.*;
 import com.inxedu.os.edu.entity.kpoint.CourseKpoint;
 import com.inxedu.os.edu.entity.subject.QuerySubject;
 import com.inxedu.os.edu.entity.subject.Subject;
@@ -15,6 +12,7 @@ import com.inxedu.os.edu.entity.teacher.QueryTeacher;
 import com.inxedu.os.edu.entity.teacher.Teacher;
 import com.inxedu.os.edu.service.course.CourseFavoritesService;
 import com.inxedu.os.edu.service.course.CourseKpointService;
+import com.inxedu.os.edu.service.course.CourseOrderService;
 import com.inxedu.os.edu.service.course.CourseService;
 import com.inxedu.os.edu.service.subject.SubjectService;
 import com.inxedu.os.edu.service.teacher.TeacherService;
@@ -30,7 +28,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 /**
  * 前台 Course管理接口
- * @author www.inxedu.com
+ *
  */
 @Controller
 public class CourseController extends BaseController {
@@ -52,6 +50,8 @@ public class CourseController extends BaseController {
 	private CourseFavoritesService courseFavoritesService;
 	@Autowired
 	private CourseKpointService courseKpointService;
+	@Autowired
+    private CourseOrderService courseOrderService;
 
     // 绑定变量名字和属性，参数封装进类
     @InitBinder("queryCourse")
@@ -147,7 +147,14 @@ public class CourseController extends BaseController {
             		//查询登用户是否已经收藏
         			boolean isFavorites = courseFavoritesService.checkFavorites(userId, courseId);
         			model.addObject("isFavorites", isFavorites);
+                    boolean isOrder = true;
+        			if(course.getCurrentPrice().doubleValue() != 0.0) {//判断视频是否需要购买
+                        //查询登用户是否已经购买
+                        isOrder = courseOrderService.checkOrder(userId, courseId);
+                    }
+                    model.addObject("isOrder", isOrder);
             	}
+
             	//查询课程章节目录
             	List<CourseKpoint> parentKpointList = new ArrayList<CourseKpoint>();//一级 课程章节
             	List<CourseKpoint> kpointList = courseKpointService.queryCourseKpointByCourseId(courseId);
@@ -212,6 +219,39 @@ public class CourseController extends BaseController {
 			logger.error("createFavorites()--error",e);
 		}
     	return json;
+    }
+    /**
+     * 添加课程收藏
+     */
+    @RequestMapping("/front/createorder/{courseId}")
+    @ResponseBody
+    public Map<String,Object> createOrder(HttpServletRequest request, @ModelAttribute("courseOrder") CourseOrder courseOrder, @PathVariable("courseId") int courseId){
+        Map<String,Object> json = new HashMap<String,Object>();
+        try{
+            int userId = SingletonLoginUtils.getLoginUserId(request);
+            if(userId<=0){
+                json = this.setJson(false, "请登录！", null);
+                return json;
+            }
+            if(courseId<=0){
+                json = this.setJson(false, "请选择要购买的课程！", null);
+                return json;
+            }
+            boolean is = courseFavoritesService.checkFavorites(userId, courseId);
+            if(is){
+                json = this.setJson(false, "该课程你已经购买过了！", null);
+                return json;
+            }
+            courseOrder.setUserId(userId);
+            courseOrder.setOrderState(1);
+            courseOrder.setAddTime(new Date());
+            courseOrderService.createCourseOrder(courseOrder);
+            json = this.setJson(true, "支付成功", null);
+        }catch (Exception e) {
+            this.setAjaxException(json);
+            logger.error("createFavorites()--error",e);
+        }
+        return json;
     }
 
     /**

@@ -28,7 +28,7 @@ import java.util.Map;
 
 /**
  * 系统用户
- * @author www.inxedu.com
+ *
  */
 @Controller
 @RequestMapping("/admin/sysuser")

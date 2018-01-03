@@ -208,7 +208,6 @@ function dialog(dTitle,msg,index,url) {
     
 }
 
-
 var ajaxUrl;//记录上次ajax分页的url
 var ajaxparameters;//记录上次ajax分页的参数
 var ajaxcallBack;
@@ -331,6 +330,13 @@ function lrFun(type) {
                                 '<input id="u-password" type="password" placeholder="请输入密码"  name="" value="" onkeyup="$(this).next().html(\'\');">'+
                                 '<p class="lr-tip-wrap"></p>'+
                             '</li>'+
+                            '<li>'+
+                                '<input id="u-randomcode-log" class="fl" style="width: 100px;" type="text" placeholder="请输入验证码"  name="" value="" onkeyup="$(this).next().next().next().html(\'\');" maxlength="4">'+
+                                '<a href="javascript:void(0)" title="" class="vam ml10 disIb fl"><img onclick="this.src=\'/ran/random?random=\'+Math.random()" alt="验证码，点击图片更换" src="/ran/random" width="86" height="40"></a>'+
+                                '<span class="c-999 fl ml10">看不清<br><a href="javascript:void(0)" class="js-verify-refresh c-green" onclick="$(this).parent().prev().find(\'img\').click()">换一张</a></span>'+
+                                '<p class="lr-tip-wrap"><span class="c-red"></p>'+
+                                '<p class="clear"></p>'+
+                            '</li>'+
                         '</ol>'+
                         /*'<section class="hLh30 of pl10"><span class="fr"><a href="/uc/register" class="c-master fsize12">没有账号？去注册→</a></span>'+*/
                         '<section class="hLh30 of pl10">'+
@@ -338,12 +344,6 @@ function lrFun(type) {
                         '<section class="mt20 tac">'+
                             '<a href="javascript:void(0)" title="登 录" class="e-login-btn" onclick="dialogLogin('+type+')">登 录</a>'+
                         '</section>'+
-                      /*  '<section class="mt20 sf-lr-wrap tac">'+
-                            '<h6 class="hLh20 mb15"><span class="c-666 fsize14">第三方快捷登录</span></h6>'+
-                            '<a href="" title="QQ登录" class="qq-sf">&nbsp;</a>'+
-                            '<a href="" title="微信登录" class="wx-sf">&nbsp;</a>'+
-                            '<a href="" title="微博登录" class="wb-sf">&nbsp;</a>'+
-                        '</section>'+  */
                     '</div>'+
                 '</section>'+
                 '<section class="undis e-login-ele">'+
@@ -379,12 +379,6 @@ function lrFun(type) {
                         '<section class="mt20 tac">'+
                             '<a href="javascript: void(0)" onclick="dialogRegister()" title="注 册" class="e-login-btn">注 册</a>'+
                         '</section>'+
-                    /*    '<section class="mt20 sf-lr-wrap tac">'+
-                            '<h6 class="hLh20 mb15"><span class="c-666 fsize14">第三方快捷登录</span></h6>'+
-                            '<a href="" title="QQ登录" class="qq-sf">&nbsp;</a>'+
-                            '<a href="" title="微信登录" class="wx-sf">&nbsp;</a>'+
-                            '<a href="" title="微博登录" class="wb-sf">&nbsp;</a>'+
-                        '</section>'+  */
                     '</div>'+
                 '</section>'+
             '</div>'
@@ -451,7 +445,7 @@ function placeholderFun() {
       });
   }
 }
-//右侧浮动 在线客服，官方微信， 返回顶部
+//右侧浮动 返回顶部
 function goTopFun() {
     var _gt = $("#goTopBtn");
     _gt.bind("click", function() {
@@ -470,6 +464,7 @@ function goTopFun() {
 function dialogLogin(type){
 	var userName=$("#u-email").val();
     var pwd = $("#u-password").val();
+    var randomcode = $("#u-randomcode-log").val();
     var autoThirty=$("#autoThirty").prop("checked")
     $("#u-email").next().html('');
     $("#u-password").next().html('');
@@ -482,6 +477,10 @@ function dialogLogin(type){
     	$("#u-password").next().html('<span class="c-orange"><em class="icon16 u-a-cw">&nbsp;</em>请输入正确的密码！</span>');
         return false;
     }
+    if($("#u-randomcode-log").val().trim()==""){//验证 验证码是否为空
+        $("#u-randomcode-log").next().next().next().html('<span class="c-orange"><em class="icon16 u-a-cw">&nbsp;</em>请输入验证码！</span>');
+        return;
+    }
 	$.ajax({
 		url:baselocation+'/uc/login',
 		type:'post',
@@ -489,7 +488,8 @@ function dialogLogin(type){
 		data:{
 			"account":userName,
 			"password":pwd,
-			"ipForget":autoThirty
+			"ipForget":autoThirty,
+            "loginCode":randomcode
 		},
 		success:function(result){
 			if(result.success==false){
@@ -568,7 +568,9 @@ function dialogRegister() {
 		async : false,
 		success : function(result) {
 			if(result.success==true) {
-				window.location.reload();
+
+                dialog('提示信息', "注册成功", 0);
+              //  window.location.reload();
 			}else {
 				$(".e-l-jy").html('<font class="fsize12 c-orange">'+result.message+'</font>');
 			}

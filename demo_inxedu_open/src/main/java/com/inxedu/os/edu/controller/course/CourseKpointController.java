@@ -25,7 +25,7 @@ import java.util.Map;
 
 /**
  * CourseKpoint 课程章节管理
- * @author www.inxedu.com
+ *
  */
 @Controller
 public class CourseKpointController extends BaseController {

@@ -93,9 +93,9 @@
 			<option <c:if test="${type == 'dailyUserNumber' }">selected="selected"</c:if> value="dailyUserNumber" onclick="statisticalChart()">每日学员数统计</option>
 			<option <c:if test="${type == 'dailyCourseNumber' }">selected="selected"</c:if> value="dailyCourseNumber" onclick="statisticalChart()">每日课程数统计</option>
 		</select>
-		<input id="day7" type="button" onclick="statisticalChart(7)" class="button" value="近7天" />
+<%--		<input id="day7" type="button" onclick="statisticalChart(7)" class="button" value="近7天" />
 		<input id="day15" type="button" onclick="statisticalChart(15)" class="button" value="近15天" />
-		<input id="day30" type="button" onclick="statisticalChart(30)" class="button" value="近30天" />
+		<input id="day30" type="button" onclick="statisticalChart(30)" class="button" value="近30天" />--%>
 		时间：
 		<input type="text" id="startDate" name="startDate" value="${startDate }"/>
 		<b>-</b>&nbsp;&nbsp;&nbsp;

@@ -3,7 +3,6 @@ package com.inxedu.os.edu.service.impl.common;
 import com.inxedu.os.common.entity.PageEntity;
 import com.inxedu.os.edu.dao.common.CommentDao;
 import com.inxedu.os.edu.entity.common.Comment;
-import com.inxedu.os.edu.service.article.ArticleService;
 import com.inxedu.os.edu.service.comment.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,8 +20,6 @@ public class CommentServiceImpl implements CommentService {
 
 	@Autowired
 	private CommentDao commentDao;
-	@Autowired
-	private ArticleService articleService;
 
 	public List<Comment> getCommentByPage(Comment comment, PageEntity page) {
 		return commentDao.getCommentByPage(comment, page);
@@ -65,7 +62,6 @@ public class CommentServiceImpl implements CommentService {
 				map.put("num","+1");
 				map.put("type", "commentCount");
 				map.put("articleId", comment.getOtherId()+"");
-				articleService.updateArticleNum(map);
 			}
 		}
 	}
@@ -91,7 +87,7 @@ public class CommentServiceImpl implements CommentService {
 				map.put("num","-1");
 				map.put("type", "commentCount");
 				map.put("articleId", comment.getOtherId()+"");
-				articleService.updateArticleNum(map);
+
 			}
 		}
 		//如果是二级回复 更新他的父级的评论数减一

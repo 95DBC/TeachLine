@@ -20,7 +20,7 @@ import java.util.Map;
 
 /**
  * 点赞controller
- * @author www.inxedu.com
+ *
  */
 @Controller
 public class PraiseController extends BaseController {

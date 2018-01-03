@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 前台用户登录拦截器
- * @author www.inxedu.com
+ *
  */
 public class IntercepterWebLogin extends HandlerInterceptorAdapter{
 

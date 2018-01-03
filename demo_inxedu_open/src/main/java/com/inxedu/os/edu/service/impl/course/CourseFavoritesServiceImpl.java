@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  * CourseFavorites 课程收藏 管理接口
- * @author www.inxedu.com
+ *
  */
 @Service("courseFavoritesService")
 public class CourseFavoritesServiceImpl implements CourseFavoritesService {

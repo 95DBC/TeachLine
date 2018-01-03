@@ -32,8 +32,7 @@ public class CacheConstans {
 	public static final String USER_FUNCTION_PREFIX = MEMFIX + "USER_ALL_FUNCTION";
 	/** 前台首页 网校名师 缓存 **/
 	public static final String INDEX_TEACHER_RECOMMEND = MEMFIX + "INDEX_TEACHER_RECOMMEND";
-	/** 文章 好文推荐 缓存 **/
-	public static final String ARTICLE_GOOD_RECOMMEND = MEMFIX + "ARTICLE_GOOD_RECOMMEND";
+
 	/** 问答 热门问答推荐 缓存 **/
 	public static final String QUESTIONS_HOT_RECOMMEND = MEMFIX + "QUESTIONS_HOT_RECOMMEND";
 

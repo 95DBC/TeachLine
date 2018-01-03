@@ -26,7 +26,7 @@ import java.util.Map;
 
 /**
  * CourseKpoint 课程章节 管理
- * @author www.inxedu.com
+ *
  */
 @Controller
 @RequestMapping("/admin")

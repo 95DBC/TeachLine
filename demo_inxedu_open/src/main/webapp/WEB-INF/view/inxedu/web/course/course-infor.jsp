@@ -4,10 +4,66 @@
 <html>
 <head>
 <title>${course.courseName}详情</title>
+	<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+	<script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="jqueryui/style.css">
 	<script src="http://vod.baofengcloud.com/html/script/bfcloud.js?v=2"></script>
 <script type="text/javascript">
 	var isok = ${isok};
 	var currentprice=${course.currentPrice};
+
+	$(function () {
+        $( "#paydialog" ).dialog({
+            autoOpen: false,
+            modal: true,
+            height: 200,
+            show: {
+                effect: "blind",
+                duration: 1000
+            },
+            hide: {
+                effect: "explode",
+                duration: 1000
+            },
+            buttons: {
+                "确认": function() {
+                    buycourse(${course.courseId});
+                    $( this ).dialog( "close" );
+
+                },
+                "取消": function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+        });
+
+    });
+    function paydialog() {
+        $( "#paydialog" ).dialog( "open" );
+    };
+    /**
+     * 购买课程
+     * @param courseId 课程ID
+     */
+    function buycourse(courseId) {
+
+            $.ajax({
+                url:baselocation+'/front/createorder/'+courseId,
+                type:'post',
+                dataType:'json',
+                success:function(result){
+                    if(result.success==false){
+                        dialog('提示',result.message,1);
+                    }else{
+                        $("#pay").html("立即观看").attr("title","立即观看").attr("onclick","if(isLogin()){ window.location.href='/uc/play/${course.courseId }'} else{lrFun();}");
+                        dialog('提示',result.message,0);
+                    }
+                }
+            });
+
+    }
+
 </script>
 </head>
 <body>
@@ -68,17 +124,16 @@
 							</span>
 						</section>
 						<section class="c-attr-mt">
+							<c:if test="${isOrder}">
 									<a href="javascript:void(0)" title="立即观看" onclick="if(isLogin()){ window.location.href='/uc/play/${course.courseId }'} else{lrFun();} " class="comm-btn c-btn-3">立即观看</a>
+							</c:if>
+							<c:if test="${ !isOrder}">
+								<a href="javascript:void(0)" title="购买" onclick="if(isLogin()){ paydialog();} else{lrFun();} " class="comm-btn c-btn-3" id="pay">购买</a>
+								<div id="paydialog" title="支付中心" style="text-align: center"><h4>是否确认购买该视频</h4></div>
+							</c:if>
 							<span class="ml10"><tt class="c-yellow f-fM">*咨询 ${websitemap.web.phone}</tt></span>
 						</section>
 						<section class="c-attr-mt of ml10">
-							<section class="kcShare pr fl hand vam">
-								<tt>
-									<em class="icon18 shareIcon"></em><span class="vam c-fff f-fM">分享</span>
-								</tt>
-								<div id="bdshare" class="bdsharebuttonbox"><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a></div>
-								<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-							</section>
 							<c:if test="${isFavorites==true }">
 										<span class="ml10 vam sc-end"><em class="icon18 scIcon"></em><a class="c-fff vam" title="收藏" onclick="" href="javascript:void(0)">已收藏</a></span>
 									</c:if>
@@ -335,7 +390,10 @@
 		    ctbodyFun();
 		  	//课程封面图适配尺寸
 		    cvPic();
+
+
 		});
+
 		//课程详情收起展开
 		var ctbodyFun = function() {
 			var ctb = $(".course-txt-body"),

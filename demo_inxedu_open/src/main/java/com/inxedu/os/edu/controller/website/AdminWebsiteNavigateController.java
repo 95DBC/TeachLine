@@ -24,7 +24,7 @@ import java.util.Map;
 /**
  * 
  * 导航管理
- * @author www.inxedu.com
+ *
  */
 @Controller
 @RequestMapping("/admin")

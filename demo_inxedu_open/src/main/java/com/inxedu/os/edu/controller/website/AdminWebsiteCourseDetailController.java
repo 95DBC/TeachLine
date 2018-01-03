@@ -24,7 +24,7 @@ import java.util.Map;
 
 /**
  * 推荐课程  Controller
- * @author www.inxedu.com
+ *
  *
  */
 @Controller

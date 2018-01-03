@@ -30,7 +30,7 @@ import com.inxedu.os.edu.service.user.UserService;
 
 /**
  * 问答评论 Controller
- * @author www.inxedu.com
+ *
  */
 @Controller
 public class QuestionsCommentController extends BaseController {

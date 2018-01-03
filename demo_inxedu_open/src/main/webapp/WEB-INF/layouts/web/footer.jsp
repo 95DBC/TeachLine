@@ -27,28 +27,28 @@
 					</section>
 				</section>
 			</section>
-			<aside class="fl col-3 tac mt15">
-				<section class="gf-tx">
-					<span><img src="${ctx}/static/inxweb/img/wx-icon.png" alt=""></span>
-					<div class="gf-tx-ewm">
-						<c:forEach var="image" items="${websiteImages.type_11}" varStatus="status">
-						<c:if test="${status.count==1 }">
-						<img src="<%=staticImage%>${image.imagesUrl}" alt="">
-						</c:if>
-					</c:forEach>
-					</div>
-				</section>
-				<section class="gf-tx">
-					<span><img src="${ctx}/static/inxweb/img/wb-icon.png" alt=""></span>
-					<div class="gf-tx-ewm">
-					<c:forEach var="image" items="${websiteImages.type_11}" varStatus="status">
-						<c:if test="${status.count==2 }">
-						<img src="<%=staticImage%>${image.imagesUrl}" alt="">
-						</c:if>
-					</c:forEach>
-					</div>
-				</section>
-			</aside>
+			<%--<aside class="fl col-3 tac mt15">--%>
+				<%--<section class="gf-tx">--%>
+					<%--<span><img src="${ctx}/static/inxweb/img/wx-icon.png" alt=""></span>--%>
+					<%--<div class="gf-tx-ewm">--%>
+						<%--<c:forEach var="image" items="${websiteImages.type_11}" varStatus="status">--%>
+						<%--<c:if test="${status.count==1 }">--%>
+						<%--<img src="<%=staticImage%>${image.imagesUrl}" alt="">--%>
+						<%--</c:if>--%>
+					<%--</c:forEach>--%>
+					<%--</div>--%>
+				<%--</section>--%>
+				<%--<section class="gf-tx">--%>
+					<%--<span><img src="${ctx}/static/inxweb/img/wb-icon.png" alt=""></span>--%>
+					<%--<div class="gf-tx-ewm">--%>
+					<%--<c:forEach var="image" items="${websiteImages.type_11}" varStatus="status">--%>
+						<%--<c:if test="${status.count==2 }">--%>
+						<%--<img src="<%=staticImage%>${image.imagesUrl}" alt="">--%>
+						<%--</c:if>--%>
+					<%--</c:forEach>--%>
+					<%--</div>--%>
+				<%--</section>--%>
+			<%--</aside>--%>
 			<div class="clear"></div>
 		</div>
 	</section>
@@ -60,15 +60,15 @@
 				<em class="r-f-icon-3">&nbsp;</em><span>返回顶部</span>
 			</a>
 		</li>
-		<li class="foot-zixun">
-			<a href="" title="在线咨询" class="bg-orange">
-				<em class="r-f-icon-1">&nbsp;</em><span>在线咨询</span>
-			</a>
-		</li>
-		<li class="foot-zixun">
-			<a href="" title="扫描关注" class="bg-orange">
-				<em class="r-f-icon-2">&nbsp;</em><span>扫描关注</span>
-			</a>
-		</li>
+		<%--<li class="foot-zixun">--%>
+			<%--<a href="" title="在线咨询" class="bg-orange">--%>
+				<%--<em class="r-f-icon-1">&nbsp;</em><span>在线咨询</span>--%>
+			<%--</a>--%>
+		<%--</li>--%>
+		<%--<li class="foot-zixun">--%>
+			<%--<a href="" title="扫描关注" class="bg-orange">--%>
+				<%--<em class="r-f-icon-2">&nbsp;</em><span>扫描关注</span>--%>
+			<%--</a>--%>
+		<%--</li>--%>
 	</ul>
 </div>

@@ -4,7 +4,6 @@ import com.inxedu.os.edu.dao.praise.PraiseDao;
 import com.inxedu.os.edu.entity.praise.Praise;
 import com.inxedu.os.edu.entity.questions.Questions;
 import com.inxedu.os.edu.entity.questions.QuestionsComment;
-import com.inxedu.os.edu.service.article.ArticleService;
 import com.inxedu.os.edu.service.comment.CommentService;
 import com.inxedu.os.edu.service.praise.PraiseService;
 import com.inxedu.os.edu.service.questions.QuestionsCommentService;
@@ -28,8 +27,7 @@ public class PraiseServiceImpl implements PraiseService {
 	private QuestionsService questionsService;
 	@Autowired
 	private QuestionsCommentService questionsCommentService;
-	@Autowired
-	private ArticleService articleService;
+
 	@Autowired
 	private CommentService commentService;
 	
@@ -48,14 +46,8 @@ public class PraiseServiceImpl implements PraiseService {
 			questionsComment.setPraiseCount(questionsComment.getPraiseCount()+1);
 			questionsCommentService.updateQuestionsComment(questionsComment);
 		}
-		//点赞类型为3的是文章点赞
-		if(type==3){
-			Map<String,String> map = new HashMap<String,String>();
-			map.put("num","+1");
-			map.put("type", "praiseCount");
-			map.put("articleId", praise.getTargetId()+"");
-			articleService.updateArticleNum(map);
-		}
+		
+
 		//点赞类型为4的是评论点赞
 		if(type==4){
 			Map<String,String> map = new HashMap<String,String>();

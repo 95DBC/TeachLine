@@ -22,7 +22,7 @@ import com.inxedu.os.edu.service.website.WebsiteProfileService;
 
 /**
  * 网站配置管理拦截器
- * @author www.inxedu.com
+ *
  */
 public class LimitIntercepterForWebsite extends HandlerInterceptorAdapter{
 	 //logger
@@ -45,7 +45,7 @@ public class LimitIntercepterForWebsite extends HandlerInterceptorAdapter{
      
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
          try{
-        		// 获得banner图
+             // 获得轮播图
  			Map<String, List<WebsiteImages>> websiteImages = websiteImagesService.queryImagesByType();
  			request.setAttribute("websiteImages", websiteImages);
         	//获得网站配置

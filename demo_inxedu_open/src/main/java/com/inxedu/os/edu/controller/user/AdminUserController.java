@@ -30,7 +30,7 @@ import java.util.*;
 
 /**
  * 前台学员
- * @author www.inxedu.com
+ *
  */
 @Controller
 @RequestMapping("/admin/user")

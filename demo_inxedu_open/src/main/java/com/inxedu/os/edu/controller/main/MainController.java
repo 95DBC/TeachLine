@@ -7,7 +7,6 @@ import com.inxedu.os.common.util.ObjectUtils;
 import com.inxedu.os.common.util.SingletonLoginUtils;
 import com.inxedu.os.edu.entity.system.SysFunction;
 import com.inxedu.os.edu.entity.system.SysUser;
-import com.inxedu.os.edu.service.article.ArticleService;
 import com.inxedu.os.edu.service.course.CourseService;
 import com.inxedu.os.edu.service.questions.QuestionsService;
 import com.inxedu.os.edu.service.statistics.StatisticsDayService;
@@ -24,10 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
-/**
- * @author www.inxedu.com
- *
- */
+
 @Controller
 @RequestMapping("/admin/main")
 public class MainController extends BaseController{
@@ -40,8 +36,7 @@ public class MainController extends BaseController{
 	private CourseService courseService;
 	@Autowired
 	private UserService userService;
-	@Autowired
-	private ArticleService articleService;
+
 	@Autowired
 	private StatisticsDayService statisticsDayService;
 	@Autowired
@@ -145,9 +140,6 @@ public class MainController extends BaseController{
 			
 			if(webCountMap==null){
 				webCountMap=new HashMap<String, Object>();
-				//所有文章数量
-				int articleCount = articleService.queryAllArticleCount();
-				webCountMap.put("articleCount", articleCount);//所有文章数量
 				//所有用户数量
 				int userCount = userService.queryAllUserCount();
 				webCountMap.put("userCount", userCount);//所有用户数量

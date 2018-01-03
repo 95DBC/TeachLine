@@ -81,6 +81,7 @@ $(function(){
 		var zTrees = $.fn.zTree.init($("#zTreeMenuWrap"), setting, vedioConent);
 		zTrees.expandAll(true);
 	}*/
+
 });
 /**
  * 显示分享组件
@@ -96,29 +97,6 @@ function shareShow() {
 	});
 }
 
-/**
- * 购买
- * @param courseId 课程ID
- */
-function buy(courseId){
-	if(!isLogin()){
-		lrFun();
-	}else{
-	    loseTimeTime = new Date(loseTimeTime.replace("-", "/").replace("-", "/"));
-	    //非直播课程直接购买
-	    if(loseType=='0'){
-	    	var nowDAte = new Date();
-	        if(loseTimeTime>nowDAte){
-	        	window.open(baselocation+'/zfbpay/gotozfb/'+courseId);
-	        }else{
-	            dialog('提示',"对不起，课程已过期!",1);
-	        }
-	    }else{
-	    	window.open(baselocation+'/zfbpay/gotozfb/'+courseId);
-	    }
-		
-	}
-}
 
 /**
  * 收藏课程
@@ -143,6 +121,7 @@ function favorites(courseId,obj){
 		lrFun();
 	}
 }
+
 
 //视频试听播放方法
 function vedioClick(freeVideoId){

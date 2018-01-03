@@ -20,7 +20,7 @@ import java.util.Map;
 
 /**
  * CourseStudyhistory 用户课程学习记录 Controller
- * @author www.inxedu.com
+ *
  */
 @Controller
 public class CourseStudyhistoryController extends BaseController{

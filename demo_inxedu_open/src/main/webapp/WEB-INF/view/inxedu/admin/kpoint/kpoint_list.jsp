@@ -152,12 +152,10 @@
 										<td>视频类型:</td>
 										<td style="text-align: left;">
 											<select id="courseKpointVideoType" name="courseKpoint.videoType" >
-												<%--<option value="">--请选择--</option>--%>
-												<option value="INXEDUVIDEO">因酷云</option>
-												<%--<option value="baofeng">暴风</option>--%>
-												<option value="IFRAME">其他</option>
-												<option value="CC">CC视频</option>
 												<option value="uploadVideo">上传本地视频</option>
+												<%--<option value="">--请选择--</option>--%>
+												<option value="IFRAME">其他</option>
+
 											</select>
 										</td>
 									</tr>
@@ -165,7 +163,7 @@
 										<td>上传进度:</td>
 										<td style="text-align: left;">
 											<input type="file" id="fileupload" class="vam"/>
-											<font color="red vam ml10">请上传mp4文件（<a target="_blank" href="http://www.ckplayer.com/manual/12/66.htm">边下边播文档</a>）</font>
+											<font color="red vam ml10">请上传mp4文件</font>
 											<div id="fileQueue" class="mt10">
 											</div>
 										</td>
@@ -205,7 +203,6 @@
 											是
 											<input type="radio" name="courseKpoint.free" value="2" />
 											否
-											<font color="red vam ml10">文档、文本格式、图片集、音频等格式暂不支持试听</font>
 										</td>
 									</tr>
 									<tr class="tr_all videoType" id="teacherTr">

@@ -7,17 +7,14 @@ import com.inxedu.os.edu.entity.user.User;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * @author www.inxedu.com
- *
- */
+
 public class SingletonLoginUtils {
 	
 	/**
 	 * 
 	 * 获取后台登录用户ID
 	 * @param request
-	 * @return 返因用户ID
+	 * @return 返回用户ID
 	 */
 	public static int getLoginSysUserId(HttpServletRequest request) {
 		SysUser useObject = getLoginSysUser(request);
