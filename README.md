@@ -109,4 +109,4 @@ Install》
 测试账号：admin 111111
 
 ## 8.效果预览图
-![效果预览](/gif/show.gif)
+![效果预览](/demo_inxedu_open/gif/show.gif)
